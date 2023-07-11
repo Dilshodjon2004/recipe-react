@@ -12,6 +12,17 @@ const Recipe = () => {
     setShowRscipe(!showRecipe);
   };
 
+  const handleRecipe = (key) => {
+    if (key.includes("Ingredient") && recipe[key]) {
+      return (
+        <tr>
+          <td>{recipe[key]}</td>
+          <td>{recipe[`strMeasure${key.slice(13)}`]}</td>
+        </tr>
+      );
+    }
+  };
+
   useEffect(() => {
     getMealById(id).then((data) => setRecipe(data.meals[0]));
   }, [id]);
@@ -49,16 +60,7 @@ const Recipe = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(recipe).map((key) => {
-                  if (key.includes("Ingredient") && recipe[key]) {
-                    return (
-                      <tr>
-                        <td>{recipe[key]}</td>
-                        <td>{recipe[`strMeasure${key.slice(13)}`]}</td>
-                      </tr>
-                    );
-                  }
-                })}
+                {Object.keys(recipe).map((key) => handleRecipe(key))}
               </tbody>
             </table>
           ) : null}
