@@ -71,7 +71,6 @@ const Recipe = () => {
                   -11
                 )}`}
                 title={id}
-                
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
